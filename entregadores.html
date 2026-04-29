@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L&R Burger - Entregadores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="painel">
+
+        <div class="menu-lateral">
+            <img src="motoboy.png" alt="Motoboy" class="motoboy-menu">
+
+            <ul class="lista-menu">
+                <li onclick="window.location.href='dashboard.html'">
+                    <span>&#9783;</span> Dashboard
+                </li>
+                <li onclick="window.location.href='pedidos.html'">
+                    <span>&#128722;</span> Pedidos
+                </li>
+                <li class="ativo" onclick="window.location.href='entregadores.html'">
+                    <span>&#128101;</span> Entregadores
+                </li>
+                <li onclick="window.location.href='configuracoes.html'">
+                    <span>&#9881;</span> Configurações
+                </li>
+            </ul>
+        </div>
+
+        <div class="conteudo">
+
+            <div class="topo-painel">
+                <img src="logo.png" alt="L&R Burger" class="logo-painel">
+                <div class="usuario" onclick="abrirMenuUsuario()">
+                    <span class="icone-usuario">&#128100;</span>
+                    <span>&#9662;</span>
+                </div>
+            </div>
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h1 class="titulo">Entregadores</h1>
+                    <h2 class="subtitulo">Cadastre e gerencie a equipe de entregas</h2>
+                </div>
+                <button class="botao-laranja" onclick="abrirCadastroEntregador()">+ Cadastrar Entregador</button>
+            </div>
+
+            <div class="bloco-grande">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Veículo</th>
+                            <th>Corridas</th>
+                            <th>Total Recebido</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaEntregadores">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <a href="https://wa.me/5500000000000" class="whatsapp" target="_blank">
+            <span>&#128241;</span>
+        </a>
+
+    </div>
+
+    <div class="modal" id="modalEntregador">
+        <div class="caixa-modal">
+            <div class="topo-modal">
+                <h2 id="tituloFormulario">Cadastrar Entregador</h2>
+                <span class="fechar" onclick="fecharModalEntregador()">&times;</span>
+            </div>
+            <form onsubmit="salvarEntregador(event)">
+                <input type="hidden" id="idEntregador">
+
+                <label>Nome</label>
+                <input type="text" id="nomeEntregador" required>
+
+                <label>Telefone</label>
+                <input type="text" id="telefoneEntregador" required>
+
+                <label>Veículo</label>
+                <select id="veiculoEntregador">
+                    <option value="Moto">Moto</option>
+                    <option value="Carro">Carro</option>
+                    <option value="Bicicleta">Bicicleta</option>
+                    <option value="A pé">A pé</option>
+                </select>
+
+                <label>Corridas Realizadas</label>
+                <input type="number" id="corridasEntregador" min="0" value="0">
+
+                <label>Total Recebido (R$)</label>
+                <input type="number" id="recebidoEntregador" step="0.01" min="0" value="0">
+
+                <button type="submit" class="botao-laranja largo">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="modalDetalhesEntregador">
+        <div class="caixa-modal">
+            <div class="topo-modal">
+                <h2>Detalhes do Entregador</h2>
+                <span class="fechar" onclick="fecharDetalhesEntregador()">&times;</span>
+            </div>
+            <div id="conteudoDetalhesEntregador"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        carregarListaEntregadores();
+    </script>
+</body>
+</html>

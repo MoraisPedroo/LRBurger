@@ -14,16 +14,16 @@
             <img src="motoboy.png" alt="Motoboy" class="motoboy-menu">
 
             <ul class="lista-menu">
-                <li class="ativo" onclick="mudarAba(event, 'dashboard')">
+                <li class="ativo" onclick="window.location.href='dashboard.html'">
                     <span>&#9783;</span> Dashboard
                 </li>
-                <li onclick="mudarAba(event, 'pedidos')">
+                <li onclick="window.location.href='pedidos.html'">
                     <span>&#128722;</span> Pedidos
                 </li>
-                <li onclick="mudarAba(event, 'entregadores')">
+                <li onclick="window.location.href='entregadores.html'">
                     <span>&#128101;</span> Entregadores
                 </li>
-                <li onclick="mudarAba(event, 'configuracoes')">
+                <li onclick="window.location.href='configuracoes.html'">
                     <span>&#9881;</span> Configurações
                 </li>
             </ul>
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <h1 class="titulo">L&R Burger - Painel de Controle</h1>
+            <h1 class="titulo"><span id="nomeUsuarioTitulo">L&R Burger</span> - Painel de Controle</h1>
             <h2 class="subtitulo">Visão Geral</h2>
 
             <div class="cards">
@@ -49,7 +49,7 @@
                         <p class="card-titulo">Pedidos Hoje</p>
                         <span class="icone-card vermelho">&#128722;</span>
                     </div>
-                    <p class="card-numero">20</p>
+                    <p class="card-numero" id="pedidosHoje">0</p>
                     <div class="grafico vermelho-linha"></div>
                 </div>
 
@@ -58,7 +58,7 @@
                         <p class="card-titulo">Entregadores Ativos</p>
                         <span class="icone-card azul">&#128101;</span>
                     </div>
-                    <p class="card-numero">4</p>
+                    <p class="card-numero" id="entregadoresAtivos">0</p>
                     <div class="grafico azul-linha"></div>
                 </div>
 
@@ -67,7 +67,7 @@
                         <p class="card-titulo">Receita Hoje</p>
                         <span class="icone-card verde">&#128176;</span>
                     </div>
-                    <p class="card-numero">R$450,20</p>
+                    <p class="card-numero" id="receitaHoje">R$0,00</p>
                     <div class="grafico verde-linha"></div>
                 </div>
 
@@ -114,6 +114,8 @@
     </div>
 
     <script src="script.js"></script>
-    <script>carregarEntregas();</script>
+    <script>
+        carregarDashboard();
+    </script>
 </body>
 </html>

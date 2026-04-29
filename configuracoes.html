@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L&R Burger - Configurações</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="painel">
+
+        <div class="menu-lateral">
+            <img src="motoboy.png" alt="Motoboy" class="motoboy-menu">
+
+            <ul class="lista-menu">
+                <li onclick="window.location.href='dashboard.html'">
+                    <span>&#9783;</span> Dashboard
+                </li>
+                <li onclick="window.location.href='pedidos.html'">
+                    <span>&#128722;</span> Pedidos
+                </li>
+                <li onclick="window.location.href='entregadores.html'">
+                    <span>&#128101;</span> Entregadores
+                </li>
+                <li class="ativo" onclick="window.location.href='configuracoes.html'">
+                    <span>&#9881;</span> Configurações
+                </li>
+            </ul>
+        </div>
+
+        <div class="conteudo">
+
+            <div class="topo-painel">
+                <img src="logo.png" alt="L&R Burger" class="logo-painel">
+                <div class="usuario" onclick="abrirMenuUsuario()">
+                    <span class="icone-usuario">&#128100;</span>
+                    <span>&#9662;</span>
+                </div>
+            </div>
+
+            <h1 class="titulo">Configurações</h1>
+            <h2 class="subtitulo">Altere as informações da sua conta</h2>
+
+            <div class="bloco-grande caixa-config">
+                <form onsubmit="salvarConfiguracoes(event)">
+                    <label>Nome de Usuário</label>
+                    <input type="text" id="campoNomeUsuario" required>
+
+                    <button type="submit" class="botao-laranja largo">Salvar Alterações</button>
+                </form>
+            </div>
+
+        </div>
+
+        <a href="https://wa.me/5500000000000" class="whatsapp" target="_blank">
+            <span>&#128241;</span>
+        </a>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        carregarConfiguracoes();
+    </script>
+</body>
+</html>

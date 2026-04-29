@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L&R Burger - Pedidos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="painel">
+
+        <div class="menu-lateral">
+            <img src="motoboy.png" alt="Motoboy" class="motoboy-menu">
+
+            <ul class="lista-menu">
+                <li onclick="window.location.href='dashboard.html'">
+                    <span>&#9783;</span> Dashboard
+                </li>
+                <li class="ativo" onclick="window.location.href='pedidos.html'">
+                    <span>&#128722;</span> Pedidos
+                </li>
+                <li onclick="window.location.href='entregadores.html'">
+                    <span>&#128101;</span> Entregadores
+                </li>
+                <li onclick="window.location.href='configuracoes.html'">
+                    <span>&#9881;</span> Configurações
+                </li>
+            </ul>
+        </div>
+
+        <div class="conteudo">
+
+            <div class="topo-painel">
+                <img src="logo.png" alt="L&R Burger" class="logo-painel">
+                <div class="usuario" onclick="abrirMenuUsuario()">
+                    <span class="icone-usuario">&#128100;</span>
+                    <span>&#9662;</span>
+                </div>
+            </div>
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h1 class="titulo">Histórico de Pedidos</h1>
+                    <h2 class="subtitulo">Veja todos os pedidos já realizados</h2>
+                </div>
+                <button class="botao-laranja" onclick="abrirNovoPedido()">+ Novo Pedido</button>
+            </div>
+
+            <div class="bloco-grande">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Pedido</th>
+                            <th>Item</th>
+                            <th>Cliente</th>
+                            <th>Entregador</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaPedidos">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <a href="https://wa.me/5500000000000" class="whatsapp" target="_blank">
+            <span>&#128241;</span>
+        </a>
+
+    </div>
+
+    <div class="modal" id="modalDetalhes">
+        <div class="caixa-modal">
+            <div class="topo-modal">
+                <h2>Detalhes do Pedido</h2>
+                <span class="fechar" onclick="fecharModalDetalhes()">&times;</span>
+            </div>
+            <div id="conteudoDetalhes"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalPedido">
+        <div class="caixa-modal">
+            <div class="topo-modal">
+                <h2>Novo Pedido</h2>
+                <span class="fechar" onclick="fecharModalPedido()">&times;</span>
+            </div>
+            <form onsubmit="salvarPedido(event)">
+                <label>Item</label>
+                <input type="text" id="itemPedido" required>
+
+                <label>Cliente</label>
+                <input type="text" id="clientePedido" required>
+
+                <label>Endereço</label>
+                <input type="text" id="enderecoPedido" required>
+
+                <label>Valor (R$)</label>
+                <input type="number" id="valorPedido" step="0.01" required>
+
+                <label>Frete (R$)</label>
+                <input type="number" id="fretePedido" step="0.01" required>
+
+                <label>Entregador</label>
+                <select id="entregadorPedido" required></select>
+
+                <label>Status</label>
+                <select id="statusPedido">
+                    <option value="Em rota">Em rota</option>
+                    <option value="Entregue">Entregue</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+
+                <button type="submit" class="botao-laranja largo">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        carregarListaPedidos();
+    </script>
+</body>
+</html>
