@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L&R Burger - Painel de Controle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="painel">
+
+        <div class="menu-lateral">
+            <img src="motoboy.png" alt="Motoboy" class="motoboy-menu">
+
+            <ul class="lista-menu">
+                <li class="ativo" onclick="mudarAba(event, 'dashboard')">
+                    <span>&#9783;</span> Dashboard
+                </li>
+                <li onclick="mudarAba(event, 'pedidos')">
+                    <span>&#128722;</span> Pedidos
+                </li>
+                <li onclick="mudarAba(event, 'entregadores')">
+                    <span>&#128101;</span> Entregadores
+                </li>
+                <li onclick="mudarAba(event, 'configuracoes')">
+                    <span>&#9881;</span> Configurações
+                </li>
+            </ul>
+        </div>
+
+        <div class="conteudo">
+
+            <div class="topo-painel">
+                <img src="logo.png" alt="L&R Burger" class="logo-painel">
+                <div class="usuario" onclick="abrirMenuUsuario()">
+                    <span class="icone-usuario">&#128100;</span>
+                    <span>&#9662;</span>
+                </div>
+            </div>
+
+            <h1 class="titulo">L&R Burger - Painel de Controle</h1>
+            <h2 class="subtitulo">Visão Geral</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="card-topo">
+                        <p class="card-titulo">Pedidos Hoje</p>
+                        <span class="icone-card vermelho">&#128722;</span>
+                    </div>
+                    <p class="card-numero">20</p>
+                    <div class="grafico vermelho-linha"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-topo">
+                        <p class="card-titulo">Entregadores Ativos</p>
+                        <span class="icone-card azul">&#128101;</span>
+                    </div>
+                    <p class="card-numero">4</p>
+                    <div class="grafico azul-linha"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-topo">
+                        <p class="card-titulo">Receita Hoje</p>
+                        <span class="icone-card verde">&#128176;</span>
+                    </div>
+                    <p class="card-numero">R$450,20</p>
+                    <div class="grafico verde-linha"></div>
+                </div>
+
+            </div>
+
+            <div class="parte-baixo">
+
+                <div class="bloco-monitoramento">
+                    <h3>Monitoramento de Entregas</h3>
+
+                    <table class="tabela">
+                        <thead>
+                            <tr>
+                                <th>Entregador</th>
+                                <th>Endereço</th>
+                                <th>Valor/frete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaEntregas">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bloco-mapa">
+                    <h3>Entregas Recentes</h3>
+                    <div class="mapa">
+                        <iframe
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=-46.7%2C-23.55%2C-46.6%2C-23.50&amp;layer=mapnik"
+                            width="100%"
+                            height="100%"
+                            style="border:0;">
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <a href="https://wa.me/5500000000000" class="whatsapp" target="_blank">
+            <span>&#128241;</span>
+        </a>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>carregarEntregas();</script>
+</body>
+</html>
