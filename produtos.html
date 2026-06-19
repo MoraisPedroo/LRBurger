@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L&R Burger - Produtos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="painel">
+
+        <div class="menu-lateral">
+            <img src="motoboy.png" alt="Motoboy" class="motoboy-menu">
+
+            <ul class="lista-menu">
+                <li onclick="window.location.href='dashboard.html'">
+                    <span>&#9783;</span> Dashboard
+                </li>
+                <li onclick="window.location.href='pedidos.html'">
+                    <span>&#128722;</span> Pedidos
+                </li>
+                <li class="ativo" onclick="window.location.href='produtos.html'">
+                    <span>&#127860;</span> Produtos
+                </li>
+                <li onclick="window.location.href='entregadores.html'">
+                    <span>&#128101;</span> Entregadores
+                </li>
+                <li onclick="window.location.href='configuracoes.html'">
+                    <span>&#9881;</span> Configurações
+                </li>
+            </ul>
+        </div>
+
+        <div class="conteudo">
+
+            <div class="topo-painel">
+                <img src="logo.png" alt="L&R Burger" class="logo-painel">
+                <div class="usuario" onclick="abrirMenuUsuario()">
+                    <span class="icone-usuario">&#128100;</span>
+                    <span>&#9662;</span>
+                </div>
+            </div>
+
+            <div class="cabecalho-pagina">
+                <div>
+                    <h1 class="titulo">Produtos</h1>
+                    <h2 class="subtitulo">Cardápio disponível no sistema</h2>
+                </div>
+                <button class="botao-laranja" onclick="abrirCadastroProduto()">+ Cadastrar Produto</button>
+            </div>
+
+            <div class="bloco-grande">
+                <div class="grade-produtos" id="listaProdutos"></div>
+            </div>
+
+        </div>
+
+        <a href="https://wa.me/5511999999999" class="whatsapp" target="_blank">
+            <span>&#128241;</span>
+        </a>
+
+    </div>
+
+    <div class="modal" id="modalProduto">
+        <div class="caixa-modal">
+            <div class="topo-modal">
+                <h2 id="tituloFormularioProduto">Cadastrar Produto</h2>
+                <span class="fechar" onclick="fecharModalProduto()">&times;</span>
+            </div>
+            <form onsubmit="salvarProduto(event)">
+                <input type="hidden" id="idProduto">
+
+                <label>Nome do Produto</label>
+                <input type="text" id="nomeProduto" placeholder="Ex: X-Burger Duplo" required>
+
+                <label>Preço (R$)</label>
+                <input type="number" id="precoProduto" step="0.01" placeholder="0,00" required>
+
+                <label>Escolha um ícone</label>
+                <div class="seletor-icones" id="seletorIcones">
+                    <div class="icone-opcao" onclick="escolherIcone('🍔', this)">🍔</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍕', this)">🍕</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🌭', this)">🌭</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🥪', this)">🥪</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🌮', this)">🌮</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🌯', this)">🌯</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍝', this)">🍝</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍣', this)">🍣</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍱', this)">🍱</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍜', this)">🍜</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍗', this)">🍗</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍤', this)">🍤</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍟', this)">🍟</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🥗', this)">🥗</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🥤', this)">🥤</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍹', this)">🍹</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍰', this)">🍰</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍦', this)">🍦</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍪', this)">🍪</div>
+                    <div class="icone-opcao" onclick="escolherIcone('🍩', this)">🍩</div>
+                </div>
+                <input type="hidden" id="iconeProduto">
+
+                <button type="submit" class="botao-laranja largo">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>
+    <script>
+        carregarListaProdutos();
+    </script>
+</body>
+</html>

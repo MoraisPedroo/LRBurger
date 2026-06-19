@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L&R Burger - Painel de Controle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,6 +21,9 @@
                 </li>
                 <li onclick="window.location.href='pedidos.html'">
                     <span>&#128722;</span> Pedidos
+                </li>
+                <li onclick="window.location.href='produtos.html'">
+                    <span>&#127860;</span> Produtos
                 </li>
                 <li onclick="window.location.href='entregadores.html'">
                     <span>&#128101;</span> Entregadores
@@ -92,15 +97,11 @@
                 </div>
 
                 <div class="bloco-mapa">
-                    <h3>Entregas Recentes</h3>
-                    <div class="mapa">
-                        <iframe
-                            src="https://www.openstreetmap.org/export/embed.html?bbox=-46.7%2C-23.55%2C-46.6%2C-23.50&amp;layer=mapnik"
-                            width="100%"
-                            height="100%"
-                            style="border:0;">
-                        </iframe>
+                    <div class="cabecalho-mapa">
+                        <h3>Entregas Recentes</h3>
+                        <button class="botao-expandir" onclick="abrirMapaGrande()" title="Ver mapa completo">&#10530;</button>
                     </div>
+                    <div class="mapa" id="mapa" onclick="abrirMapaGrande()"></div>
                 </div>
 
             </div>
@@ -113,6 +114,19 @@
 
     </div>
 
+    <div class="modal" id="modalMapaGrande">
+        <div class="caixa-modal-grande">
+            <div class="topo-modal">
+                <h2>Mapa Completo de Entregas</h2>
+                <span class="fechar" onclick="fecharMapaGrande()">&times;</span>
+            </div>
+            <div id="mapaGrande" class="mapa-grande"></div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
     <script>
         carregarDashboard();

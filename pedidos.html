@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L&R Burger - Pedidos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,6 +20,9 @@
                 </li>
                 <li class="ativo" onclick="window.location.href='pedidos.html'">
                     <span>&#128722;</span> Pedidos
+                </li>
+                <li onclick="window.location.href='produtos.html'">
+                    <span>&#127860;</span> Produtos
                 </li>
                 <li onclick="window.location.href='entregadores.html'">
                     <span>&#128101;</span> Entregadores
@@ -91,36 +95,66 @@
                 <span class="fechar" onclick="fecharModalPedido()">&times;</span>
             </div>
             <form onsubmit="salvarPedido(event)">
-                <label>Item</label>
-                <input type="text" id="itemPedido" required>
+                <label>Selecione os Produtos</label>
+                <div class="lista-produtos-selecionar" id="listaProdutosSelecionar"></div>
+                <p class="resumo-selecionados" id="resumoSelecionados">Nenhum produto selecionado</p>
 
                 <label>Cliente</label>
-                <input type="text" id="clientePedido" required>
+                <input type="text" id="clientePedido" placeholder="Nome do cliente" required>
 
-                <label>Endereço</label>
-                <input type="text" id="enderecoPedido" required>
+                <label>CEP</label>
+                <input type="text" id="cepPedido" placeholder="00000-000" maxlength="9" onblur="buscarCep(this)" required>
 
-                <label>Valor (R$)</label>
-                <input type="number" id="valorPedido" step="0.01" required>
+                <div class="linha-dupla">
+                    <div>
+                        <label>Rua</label>
+                        <input type="text" id="ruaPedido" required>
+                    </div>
+                    <div class="numero-campo">
+                        <label>Número</label>
+                        <input type="text" id="numeroPedido" onblur="calcularFreteAuto()" required>
+                    </div>
+                </div>
 
-                <label>Frete (R$)</label>
-                <input type="number" id="fretePedido" step="0.01" required>
+                <label>Bairro</label>
+                <input type="text" id="bairroPedido" required>
+
+                <div class="linha-dupla">
+                    <div>
+                        <label>Cidade</label>
+                        <input type="text" id="cidadePedido" onblur="calcularFreteAuto()" required>
+                    </div>
+                    <div class="numero-campo">
+                        <label>Estado</label>
+                        <input type="text" id="estadoPedido" maxlength="2" required>
+                    </div>
+                </div>
+
+                <input type="hidden" id="latDestino">
+                <input type="hidden" id="lonDestino">
+
+                <div class="linha-dupla">
+                    <div>
+                        <label>Valor (R$)</label>
+                        <input type="number" id="valorPedido" step="0.01" required>
+                    </div>
+                    <div>
+                        <label>Frete (R$)</label>
+                        <input type="number" id="fretePedido" step="0.01" required>
+                    </div>
+                </div>
+                <small class="ajuda" id="infoFrete">O frete é calculado automaticamente pela distância da unidade.</small>
 
                 <label>Entregador</label>
                 <select id="entregadorPedido" required></select>
-
-                <label>Status</label>
-                <select id="statusPedido">
-                    <option value="Em rota">Em rota</option>
-                    <option value="Entregue">Entregue</option>
-                    <option value="Cancelado">Cancelado</option>
-                </select>
 
                 <button type="submit" class="botao-laranja largo">Salvar</button>
             </form>
         </div>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="script.js"></script>
     <script>
         carregarListaPedidos();

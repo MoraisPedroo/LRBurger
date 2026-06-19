@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L&R Burger - Configurações</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,6 +20,9 @@
                 </li>
                 <li onclick="window.location.href='pedidos.html'">
                     <span>&#128722;</span> Pedidos
+                </li>
+                <li onclick="window.location.href='produtos.html'">
+                    <span>&#127860;</span> Produtos
                 </li>
                 <li onclick="window.location.href='entregadores.html'">
                     <span>&#128101;</span> Entregadores
@@ -45,7 +49,22 @@
             <div class="bloco-grande caixa-config">
                 <form onsubmit="salvarConfiguracoes(event)">
                     <label>Nome de Usuário</label>
-                    <input type="text" id="campoNomeUsuario" required>
+                    <input type="text" id="campoNomeUsuario" placeholder="Ex: Leda Burger" required>
+
+                    <label>Número do WhatsApp (com DDD e DDI)</label>
+                    <input type="text" id="campoWhatsApp" placeholder="Ex: 5511999999999">
+                    <small class="ajuda">Este número será usado no botão verde de WhatsApp do sistema.</small>
+
+                    <label>Endereço da Unidade</label>
+                    <div class="autocomplete-wrapper">
+                        <input type="text" id="enderecoUnidade" autocomplete="off" placeholder="Comece a digitar: ex Rua das Flores" oninput="buscarSugestoes(this)" onblur="fecharSugestoes()">
+                        <div class="sugestoes" id="sugestoesEndereco"></div>
+                    </div>
+                    <small class="ajuda" id="statusUnidade">Comece a digitar o endereço e escolha um da lista que aparece.</small>
+
+                    <label>Valor do Frete por KM (R$)</label>
+                    <input type="number" id="valorPorKm" step="0.01" placeholder="Ex: 2.50">
+                    <small class="ajuda">Quanto será cobrado por quilômetro de distância do cliente até a unidade.</small>
 
                     <button type="submit" class="botao-laranja largo">Salvar Alterações</button>
                 </form>
@@ -53,12 +72,14 @@
 
         </div>
 
-        <a href="https://wa.me/5500000000000" class="whatsapp" target="_blank">
+        <a href="https://wa.me/5511999999999" class="whatsapp" target="_blank">
             <span>&#128241;</span>
         </a>
 
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="script.js"></script>
     <script>
         carregarConfiguracoes();

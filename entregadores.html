@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L&R Burger - Entregadores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,6 +20,9 @@
                 </li>
                 <li onclick="window.location.href='pedidos.html'">
                     <span>&#128722;</span> Pedidos
+                </li>
+                <li onclick="window.location.href='produtos.html'">
+                    <span>&#127860;</span> Produtos
                 </li>
                 <li class="ativo" onclick="window.location.href='entregadores.html'">
                     <span>&#128101;</span> Entregadores
@@ -95,11 +99,7 @@
                     <option value="A pé">A pé</option>
                 </select>
 
-                <label>Corridas Realizadas</label>
-                <input type="number" id="corridasEntregador" min="0" value="0">
-
-                <label>Total Recebido (R$)</label>
-                <input type="number" id="recebidoEntregador" step="0.01" min="0" value="0">
+                <small class="ajuda">Corridas e valor recebido são atualizados automaticamente a cada pedido.</small>
 
                 <button type="submit" class="botao-laranja largo">Salvar</button>
             </form>
@@ -116,6 +116,8 @@
         </div>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="script.js"></script>
     <script>
         carregarListaEntregadores();
