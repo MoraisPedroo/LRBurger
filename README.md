@@ -4,6 +4,14 @@ Sistema web para gestão de entregas de uma hamburgueria. Permite controlar pedi
 
 O projeto foi feito em **HTML, CSS e JavaScript puro** (sem frameworks), usando o **Firebase Firestore** como banco de dados online. A ideia é ser simples de entender e fácil de continuar.
 
+## Acesso online
+
+O sistema já está publicado e pode ser acessado direto pelo navegador:
+
+**https://lrburger.vercel.app/**
+
+Não é preciso instalar nada para testar. Qualquer usuário e senha funcionam no login.
+
 ---
 
 ## Índice
@@ -77,7 +85,11 @@ LRBurger/
 
 ## Como rodar o projeto
 
-O sistema é só de arquivos estáticos (não precisa de servidor próprio). Existem duas formas:
+O sistema já está publicado na **Vercel** e pode ser usado direto pelo link, sem instalar nada:
+
+**https://lrburger.vercel.app/**
+
+Para rodar localmente (durante o desenvolvimento), o sistema é só de arquivos estáticos. Existem duas formas:
 
 ### Forma 1 — Abrir direto no navegador
 Dê um duplo clique no `index.html`. Funciona, mas algumas APIs podem ter restrições de segurança do navegador.
